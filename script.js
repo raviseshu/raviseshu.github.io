@@ -123,9 +123,18 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Typing effect for hero section (optional enhancement)
+// Typing effect for hero section - Updated with full-stack roles
 document.addEventListener('DOMContentLoaded', () => {
-    const roles = ['Software Engineer', 'Backend Developer', 'Java Developer', 'Cloud Enthusiast'];
+    const roles = [
+        'Full Stack Software Engineer', 
+        'Frontend Developer', 
+        'Backend Developer', 
+        'React Developer',
+        'Java Developer', 
+        'TypeScript Developer',
+        'Node.js Developer',
+        'Cloud Enthusiast'
+    ];
     const roleElement = document.querySelector('.hero-content h2');
     let roleIndex = 0;
     let charIndex = 0;
@@ -346,4 +355,49 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+});
+
+// Skill category hover effects
+document.addEventListener('DOMContentLoaded', () => {
+    const skillCategories = document.querySelectorAll('.skill-category');
+    
+    skillCategories.forEach(category => {
+        category.addEventListener('mouseenter', () => {
+            category.style.transform = 'translateY(-5px)';
+            category.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+        });
+        
+        category.addEventListener('mouseleave', () => {
+            category.style.transform = 'translateY(0)';
+            category.style.boxShadow = 'none';
+        });
+    });
+});
+
+// Add frontend technology showcase
+document.addEventListener('DOMContentLoaded', () => {
+    // Create technology showcase animation
+    const techShowcase = () => {
+        const frontendSkills = document.querySelectorAll('.skill-category:first-child .skill-tag');
+        
+        frontendSkills.forEach((skill, index) => {
+            setTimeout(() => {
+                skill.style.background = '#3b82f6';
+                skill.style.color = 'white';
+                skill.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    skill.style.background = 'white';
+                    skill.style.color = '#4b5563';
+                    skill.style.transform = 'scale(1)';
+                }, 2000);
+            }, index * 300);
+        });
+    };
+    
+    // Run showcase on page load
+    setTimeout(techShowcase, 3000);
+    
+    // Run showcase every 15 seconds
+    setInterval(techShowcase, 15000);
 });
